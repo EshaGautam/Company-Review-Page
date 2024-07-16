@@ -3,12 +3,22 @@ let form = document.querySelector("#form");
 form.addEventListener("submit", async function (event) {
 
   event.preventDefault();
+  let stars = document.querySelectorAll('.rate')
   let companyName = document.getElementById("name").value;
   let companyPros = document.getElementById("pros").value; 
   let companyCons = document.getElementById("cons").value;
-  let companyRating = document.getElementById("rating").value;
+  // let companyRating = document.getElementById("rating").value;
   let id = document.getElementById('reviewId').value
 
+  let companyRating = stars.forEach((star)=>{
+    star.addEventListener('click',(event)=>{
+       let val = star.getAttribute('value')
+       return val
+      
+    })
+  })
+
+  console.log(companyRating)
 
   let newReview = {
     id :id,
@@ -47,29 +57,43 @@ async function displayReview(searchedname) {
       throw new Error('problem fetching data')
     } 
     const data = await response.json()
-    console.log(data.reviews)
-    console.log((data.averageRating).toFixed(1) )
+   const averageRatings = calculateAverageRatings(data.reviews)
+  
 
     const companyNameDiv = document.getElementById('companyName');
     const averageRatingDiv = document.getElementById('averageRating');
-    const prosConsList = document.getElementById('prosConsList');
+   
 
-    companyNameDiv.innerHTML = `<h4>${searchedname}</h4>`;
-    averageRatingDiv.innerHTML = `<p>Average Rating: ${data.averageRating.toFixed(1)}</p>`;
+    companyNameDiv.innerHTML = `<h3>${searchedname}</h3>`;
+    averageRatingDiv.innerHTML = `<p class='d-flex justify-content-evenly'>Average Rating: ${averageRatings} <span class="star-filled">★</span></p>`;
 
 
-    let expenseList = document.getElementById("expenseList");
-    expenseList.innerHTML = "";
+    let reviewList = document.getElementById("reviewList");
+    reviewList.innerHTML = "";
  
   data.reviews.forEach((element, index) => {
-    
+     
      let reviewAdded = document.createElement("li");
      reviewAdded.className = "exp-made ";
      reviewAdded.classList.add("list-group-item");
-   
-     reviewAdded.textContent = `Company Name: ${element.name}, pros: ${element.pros}, Cons: ${element.cons} , Ratings:${element.rating}`;
 
-     expenseList.appendChild(reviewAdded);
+
+    
+     let starsHTML = "";
+     for (let i = 1; i <= 5; i++) {
+         if (i <= element.rating) {
+             starsHTML += `<span class="star-filled">★</span>`;
+         } else {
+             starsHTML += `<span class="star-unfilled">☆</span>`;
+         }
+     }
+
+
+   
+     reviewAdded.innerHTML = `<span><h5>Pros:</h5> ${element.pros}</span><span> <h5>Cons:</h5> ${element.cons}</span> <span><h>Ratings</h>${starsHTML}</span>`;
+
+     reviewList.appendChild(reviewAdded);
+  
    });
 
   }
@@ -88,3 +112,16 @@ submitBtn.addEventListener('click',async function(event){
 
 
 })
+
+
+function calculateAverageRatings(reviews){
+    let sum = 0;
+    reviews.forEach(review => {
+        sum += review.rating;
+    })
+   const averageRating= sum / reviews.length;
+   return averageRating.toFixed(1)
+}
+
+
+

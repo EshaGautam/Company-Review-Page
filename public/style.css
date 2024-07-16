@@ -1,18 +1,99 @@
 body{
-    background-color:#0077cc 
+    background-color:gainsboro ;
+    padding-top:2rem;
+    
 
 }
-#heading{ 
-margin-left: 30%;
-   display: flex;
-   justify-content:center;
-   width: 30%;
-   background-color: #0077cc;
-   border:2px;  
-   height: 30%;
-   width: 40%;
-   padding: 10px;
-   border-radius: 5px;
-   color: white;
+h2{ 
+margin-left: 40%;
+margin-bottom: 3rem;
+   color:black;
 }
 
+#form{
+width:25%;
+position: relative;
+left:40%;
+}
+
+.search-ctn{
+    display: flex;
+    width:50%;
+    position: relative;
+    left:30%;
+}
+
+#searchResult{
+    display:flex;
+    flex-direction: column;
+    color:black;
+    position: relative;
+    left:30%;
+    width: 20%; 
+    border:5px solid white;
+    width:50%;
+    background-color: whitesmoke;
+    margin-top: 1rem;
+}
+
+
+
+#search-head{
+    width: 20%;
+    margin-left: 30%;
+    
+}
+
+#reviewList li{
+display: flex;
+flex-direction: column;
+}
+
+#search-btn{
+    margin-left: 2rem;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 2em;
+    color: black;
+    cursor: pointer;
+}
+
+.star-rating input:checked ~ label {
+    color: #f5b301;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #f5b301;
+}
+
+.star-filled {
+    color: gold; 
+    size: 3rem;
+
+}
+.star-unfilled {
+    color: black; 
+    size: 3rem;
+}
+
+.star-ctn{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.star-ctn h5{
+    margin-top: 0.75rem;
+}

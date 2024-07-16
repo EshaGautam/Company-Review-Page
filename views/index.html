@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,70 +11,68 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Company Review Page</title>
+    <title>Company Review's</title>
 </head>
-
 <body>
 
-
-
-    <div class="d-flex justify-content-center">
-
-        <div class="card" style="width: 50%; margin-top: 20px; padding-top:25px; ">
-            <div id="heading"><h3>REVIEW THE COMPANY</h3></div>
-            <div class="card-body">
-
-                <div class="d-flex justify-content-center">
-
-                    <form id="form">
-                        <input type="hidden" id="reviewId"></input>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="name" placeholder="Enter Company Name" required>
-                            <label for="name">Company Name</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="comments">Pros:</label>
-                            <textarea id="pros" name="pros" rows="4" cols="50" placeholder="Write Pros"></textarea>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="comments">Cons:</label>
-                            <textarea id="cons" name="cons" rows="4" cols="50" placeholder="Write Cons"></textarea>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="rating" placeholder="How much you rate" required>
-                            <label for="name">Rating</label>
-                        </div>
-                        <div class="mx-auto p-4" style="width: 200px;">
-                            <button type="submit" class="btn btn-primary btn-sm">Submit Review</button>
-                        </div>
-
-                    </form>
+    <div>
+        <h2>
+            REVIEW COMPANY HERE!
+        </h2>
+        <div >
+            <form id="form">
+                <input type="hidden" id="reviewId"></input>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" placeholder="Enter Company Name" required>
+                    <label for="name">Company Name</label>
                 </div>
+                <div class="form-floating mb-3">
+                   
+                    <textarea id="pros" name="pros" rows="25" cols="50" placeholder="Write Pros"  class="form-control" required></textarea>
+                    <label for="pros">Pros:</label>
+                   
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea id="cons" name="cons" rows="25" cols="50" placeholder="Write Cons"  class="form-control" required></textarea>
+                    <label for="cons">Cons:</label>
+                </div>
+                <div class="star-ctn">
+                    <h5>Ratings:</h5>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating"  class="rate" value="5"><label for="star5" title="5 stars">☆</label>
+                        <input type="radio" id="star4" name="rating"  class="rate" value="4"><label for="star4" title="4 stars">☆</label>
+                        <input type="radio" id="star3" name="rating"   class="rate" value="3"><label for="star3" title="3 stars">☆</label>
+                        <input type="radio" id="star2" name="rating"  class="rate"  value="2"><label for="star2" title="2 stars">☆</label>
+                        <input type="radio" id="star1" name="rating"  class="rate"  value="1"><label for="star1" title="1 star">☆</label>
+                    </div>
+                </div>
+                
+                <div class="mx-auto p-4" style="width: 200px;">
+                    <button type="submit" class="btn btn-dark btn-sm">Submit Review</button>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <div class="search-ctn" st>
+                <input type="text" class="form-control" id="search" placeholder="You Can Search Your Company Here!"  required>
+                    <button type="button" class="btn btn-dark btn-md" id = 'search-btn'>Search</button>
+            </div>
+            <div >
+                <div id="searchResult">
+                    <div id="search-head">
+                    <div id="companyName"></div>
+                    <div id="averageRating" ></div>
+                </div>
+                    <div id="reviewListGroup">
+                   <ul class="list-group" id="reviewList"></ul>
+             </div>                
+                </div>
+            </div>
             </div>
         </div>
     </div>
-    <div class=" w-50 mb-3 d-flex">
-        <input type="text" class="form-control" id="search" placeholder="Enter Company Name to search" class=" w-25" required>
-        <div class="mx-auto p-4" style="width: 200px;">
-            <button type="button" class="btn btn-primary btn-sm" id = 'search-btn'>Search</button>
-        </div>
-    </div>
-  
-   <div id="searchResults" class="d-flex justify-content-center mt-4" style="display: none;">
-        <div class="card" style="width: 50%; padding: 20px;">
-            <div id="companyName"></div>
-            <div id="averageRating" ></div>
-            <div class="d-flex justify-content-evenly">
-
-                <ul class="list-group list-group-flush" id="expenseList"></ul>
-                    </div>
-                    
-                
-        </div>
-    </div>
-</div>
-</div></body>
-
+    
+</body>
 <script src="index.js"></script>
-
 </html>

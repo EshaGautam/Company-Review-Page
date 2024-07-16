@@ -27,25 +27,17 @@ exports.postReview = (req, res, next) => {
   };
 
 
-  exports.getReview = (req, res, next) => {
-    const searchedCompany = req.params.search;
+  exports.getReview=(req,res,next)=>{
+   const searchedCompany = req.params.search
 
     Review.findAll({ where: { name: searchedCompany } })
-        .then(reviews => {
-            if (!reviews || reviews.length === 0) {
-                return res.status(404).json({ message: 'No reviews found for this company' });
-            }
+    .then(review => {
+        res.status(200).json({reviews:review});
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({ message: 'Failed to fetch reviews' });
+    });
 
-            let sum = 0;
-            reviews.forEach(review => {
-                sum += review.rating;
-            });
-            const averageRating = sum / reviews.length;
-
-            res.status(200).json({ reviews, averageRating });
-        })
-        .catch(error => {
-            console.error(error);
-            res.status(500).json({ message: 'Failed to fetch reviews and calculate average rating' });
-        });
-};
+    }
+    
