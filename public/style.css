@@ -29,7 +29,7 @@ left:40%;
     color:black;
     position: relative;
     left:30%;
-    width: 20%; 
+
     border:5px solid white;
     width:50%;
     background-color: whitesmoke;
@@ -39,8 +39,8 @@ left:40%;
 
 
 #search-head{
-    width: 20%;
-    margin-left: 30%;
+    width: 40%;
+    margin-left: 40%;
     
 }
 
@@ -96,4 +96,9 @@ flex-direction: column;
 
 .star-ctn h5{
     margin-top: 0.75rem;
+}
+
+#head-ctn{
+    position: relative;
+    left:35%;
 }

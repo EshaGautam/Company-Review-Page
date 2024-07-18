@@ -1,31 +1,30 @@
 let form = document.querySelector("#form");
 
+let selectedRating = 0;
+document.querySelectorAll('.rate').forEach(star => {
+  star.addEventListener('click', (event) => {
+    selectedRating = star.getAttribute('value');
+    console.log(`Selected rating: ${selectedRating}`);
+  });
+});
+
 form.addEventListener("submit", async function (event) {
 
   event.preventDefault();
-  let stars = document.querySelectorAll('.rate')
+  
+
   let companyName = document.getElementById("name").value;
   let companyPros = document.getElementById("pros").value; 
   let companyCons = document.getElementById("cons").value;
-  // let companyRating = document.getElementById("rating").value;
   let id = document.getElementById('reviewId').value
-
-  let companyRating = stars.forEach((star)=>{
-    star.addEventListener('click',(event)=>{
-       let val = star.getAttribute('value')
-       return val
-      
-    })
-  })
-
-  console.log(companyRating)
+ 
 
   let newReview = {
     id :id,
     name:companyName,
     pros:companyPros,
     cons:companyCons,
-    rating:companyRating
+    rating:selectedRating
   }
 
 try{
@@ -45,7 +44,7 @@ catch(error){
   console.log(error)
 }
  form.reset();
-
+selectedRating=0
 });
 
 
@@ -65,7 +64,7 @@ async function displayReview(searchedname) {
    
 
     companyNameDiv.innerHTML = `<h3>${searchedname}</h3>`;
-    averageRatingDiv.innerHTML = `<p class='d-flex justify-content-evenly'>Average Rating: ${averageRatings} <span class="star-filled">★</span></p>`;
+    averageRatingDiv.innerHTML = `<p class='d-flex'>Average Rating: ${averageRatings} <span class="star-filled">★</span></p>`;
 
 
     let reviewList = document.getElementById("reviewList");
